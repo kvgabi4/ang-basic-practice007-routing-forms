@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col-6 offset-3">
+    <form #eventFrom="ngForm" (ngSubmit)="onFormSubmit(eventFrom)">
+      <div class="form-group">
+        <label for="id">#</label>
+        <input [(ngModel)]="event.id" type="text" name="id"
+        class="form-control" required>
+        <div [hidden]="eventFrom.controls.id?.valid || eventFrom.controls.id?.pristine" class="error-message">
+          <!-- A névnek minimum 8 karakter hosszúnak kell lennie! -->
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input [(ngModel)]="event.name" type="text" name="name"
+        class="form-control" pattern="[^]{8,}" required>
+        <div [hidden]="eventFrom.controls.name?.valid || eventFrom.controls.name?.pristine" class="error-message">
+          A névnek minimum 8 karakter hosszúnak kell lennie!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="date">Date</label>
+        <input [(ngModel)]="event.date" type="text" name="date"
+        class="form-control" rattern=".{8,0}" required>
+        <div [hidden]="eventFrom.controls.date?.valid || eventFrom.controls.date?.pristine" class="error-message">
+          A dátumot meg kell adni!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="time">Time</label>
+        <input [(ngModel)]="event.time" type="text" name="time"
+        class="form-control" rattern=".{8,0}" required>
+        <div [hidden]="eventFrom.controls.time?.valid || eventFrom.controls.time?.pristine" class="error-message">
+          A dátumot meg kell adni!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="location.address">Location - address</label>
+        <input [(ngModel)]="event.location.address" type="text" name="address"
+        class="form-control" rattern=".{8,0}" required>
+        <div [hidden]="eventFrom.controls.location?.valid || eventFrom.controls.location?.pristine" class="error-message">
+          A címet meg kell adni!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="location.city">Location - city</label>
+        <input [(ngModel)]="event.location.city" type="text" name="city"
+        class="form-control" rattern=".{8,0}" required>
+      </div>
+      <div class="form-group">
+        <label for="location.country">Location - country</label>
+        <input [(ngModel)]="event.location.country" type="text" name="country"
+        class="form-control" rattern=".{8,0}" required>
+      </div>
+      <button [disabled]="eventFrom.invalid" class="btn btn-block btn-primary">
+        <i class="fa fa-save"></i>
+      </button>
+    </form>
+  </div>
+</div>
